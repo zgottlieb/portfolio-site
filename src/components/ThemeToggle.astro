@@ -86,7 +86,8 @@ import Icon from "./Icon.astro";
       button.addEventListener("click", () => setTheme(!this.isDark()));
 
       // Initialize button state to reflect current theme.
-      setTheme(this.isDark());
+      const isDark = document.documentElement.classList.contains("theme-dark");
+      setTheme(isDark);
     }
 
     isDark() {

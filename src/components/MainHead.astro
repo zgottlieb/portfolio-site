@@ -26,14 +26,12 @@ const {
   rel="stylesheet"
 />
 <script is:inline>
-  // This code is inlined in the head to make dark mode instant & blocking.
+  // This code is inlined in the head to make light mode instant & blocking.
   const getThemePreference = () => {
     if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
       return localStorage.getItem("theme");
     }
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
+    return "light"; // Explicitly default to light theme
   };
   const isDark = getThemePreference() === "dark";
   document.documentElement.classList[isDark ? "add" : "remove"]("theme-dark");
