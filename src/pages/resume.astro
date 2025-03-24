@@ -104,12 +104,9 @@ const resume = {
 };
 ---
 
-<BaseLayout
-  title="About | Zach Gottlieb"
-  description="About Zach Gottlieb Lorem Ipsum"
->
+<BaseLayout title="Resume | Zach Gottlieb">
   <div class="stack gap-20">
-    <main class="wrapper">
+    <main class="container stack gap-8">
       <Hero title="Resume" align="start" />
 
       <section class="mt-3">
@@ -164,6 +161,12 @@ const resume = {
 </BaseLayout>
 
 <style>
+  .container {
+    max-width: 1200px; /* Ensure consistent width */
+    margin: 0 auto; /* Center align the content */
+    padding: 0 1rem; /* Add padding for smaller screens */
+  }
+
   .about {
     display: flex;
     flex-direction: column;

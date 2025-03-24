@@ -15,8 +15,12 @@ const projects = await getCollection("work");
   description="Learn about Zach Gottlieb's most recent projects"
 >
   <div class="stack gap-20">
-    <main class="wrapper stack gap-8">
-      <Hero title="My Work" align="start" />
+    <main class="container stack gap-8">
+      <Hero
+        title="My Work"
+        tagline="A collection of my data visualization and web application development work over my career. Professional and personal projects may be included. Click into each project to read more details!"
+        align="start"
+      />
       <Grid>
         {
           projects.map((project) => (
@@ -31,6 +35,12 @@ const projects = await getCollection("work");
 </BaseLayout>
 
 <style>
+  .container {
+    max-width: 1200px; /* Ensure consistent width */
+    margin: 0 auto; /* Center align the content */
+    padding: 0 1rem; /* Add padding for smaller screens */
+  }
+
   .wrapper {
     margin-top: 2rem; /* Add consistent spacing between header and content */
   }
@@ -42,5 +52,26 @@ const projects = await getCollection("work");
   h1 {
     font-size: 2rem; /* Consistent title size */
     text-align: center; /* Center-align titles */
+  }
+
+  .view-all-button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--gray-300);
+    border: 1px solid var(--gray-300);
+    border-radius: 0.25rem;
+    text-decoration: none;
+    background-color: transparent;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .view-all-button:hover,
+  .view-all-button:focus {
+    color: var(--accent-regular);
+    border-color: var(--accent-regular);
+    background-color: var(--gray-900);
   }
 </style>

@@ -24,12 +24,11 @@ const { align = "center", tagline, title } = Astro.props;
 
   .title,
   .tagline {
-    /* max-width: 37ch; */
     margin-inline: auto;
   }
 
   .title {
-    font-size: var(--text-3xl);
+    font-size: var(--text-xl); /* Default font size for smaller screens */
     color: var(--gray-0);
   }
 
@@ -48,7 +47,7 @@ const { align = "center", tagline, title } = Astro.props;
     }
 
     .title {
-      font-size: var(--text-5xl);
+      font-size: var(--text-3xl); /* Larger font size for larger screens */
     }
   }
 </style>

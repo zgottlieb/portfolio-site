@@ -18,6 +18,22 @@ const { title, description } = Astro.props;
 <html lang="en">
   <head>
     <MainHead title={title} description={description} />
+    <link
+      rel="preload"
+      href="/path-to-font/font-file.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <style>
+      nav {
+        font-family:
+          "YourFontName", sans-serif; /* Ensure consistent font-family */
+        font-size: 1rem; /* Ensure consistent font size */
+        font-weight: 400; /* Ensure consistent font weight */
+        line-height: 1.5; /* Ensure consistent line height */
+      }
+    </style>
   </head>
   <body>
     <div class="stack backgrounds">
