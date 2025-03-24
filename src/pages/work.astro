@@ -8,6 +8,7 @@ import Hero from "../components/Hero.astro";
 import Grid from "../components/Grid.astro";
 
 const projects = await getCollection("work");
+const workPages = projects.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout
@@ -23,7 +24,7 @@ const projects = await getCollection("work");
       />
       <Grid>
         {
-          projects.map((project) => (
+          workPages.map((project) => (
             <li>
               <PortfolioPreview project={project} />
             </li>
