@@ -1,0 +1,300 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import Hero from "../components/Hero.astro";
+
+const resume = {
+  name: "Zach Gottlieb",
+  title: "Technical Lead Manager",
+  contact: {
+    email: "zachg27@gmail.com",
+    website: "https://github.com/zgottlieb",
+    location: "Boston, MA",
+  },
+  experience: [
+    {
+      company: "Asimov",
+      roles: [
+        {
+          role: "Technical Lead Manager",
+          duration: "June 2023 - Nov 2024",
+          description: [
+            "Promoted to TLM role after successfully leading projects as IC; helped create new pod-based team structure.",
+            "Led and managed a pod with 3 direct reports focused on delivering features, data integrations, and improvements for academic users of Kernel, Asimov’s computer-aided design tool for designing genetic constructs.",
+            "Worked with product team to collect and define product requirements and took lead role in project management.",
+            "Continued IC work, including new features, bug fixes, tests, and code reviews (about 25-50% of each week).",
+            "Filled in backend duties on FE-heavy pod, including data and schema database migrations with Alembic / PostgreSQL / SQLAlchemy and API updates in Python / FastAPI.",
+          ],
+          top_projects: [
+            "Increased key user actions by more than 2x by creating a more intuitive UI/UX for new users using FullStory, DataDog, and Google Analytics.",
+            "Set initial groundwork for importing sequence data into Kernel via the UI, a critical feature for onboarding users.",
+            "Led migration of Kernel’s core data model to unlock new app functionality, including overhauling the GraphQL schema and integrating Strawberry GraphQL.",
+            "Led effort to ingest iGEM genetic sequence information into Kernel, delivering key objectives for Asimov’s partnership with iGEM.",
+          ],
+        },
+        {
+          role: "Senior Front End Engineer",
+          duration: "Feb 2021 - June 2023",
+          description: [
+            "Co-led early development of Kernel with TypeScript, Next.js, and Hasura.",
+            "Led development of various core features, including the Construct Editor, a UI tool for designing DNA sequences using SVG glyphs.",
+            "Led major rewrite of the state management system using XState and the command pattern to reduce bugs and enable undo/redo functionality.",
+            "Built data visualization interface using Vega Lite for the Simulator, an ML-based tool predicting genetic sequence behavior.",
+          ],
+        },
+      ],
+    },
+    {
+      company: "TetraScience",
+      roles: [
+        {
+          role: "Software Engineer",
+          duration: "May 2020 - Feb 2021",
+          description: [
+            "Built web app using React, Apollo, and Node to revamp how lab scientists manage and process data files.",
+          ],
+        },
+      ],
+    },
+    {
+      company: "Toast",
+      roles: [
+        {
+          role: "Senior Front End Engineer (SE3)",
+          duration: "Jan 2019 - Apr 2020",
+          description: [
+            "Built data analytics platform enabling restaurants to track business metrics, using the Victory charting library and React Redux.",
+            "Led transition from Angular to React and introduced Apollo GraphQL on client and server.",
+          ],
+        },
+      ],
+    },
+    {
+      company: "Signafire",
+      roles: [
+        {
+          role: "Team Lead & Front End Engineer",
+          duration: "Jul 2015 - May 2018",
+          description: [
+            "Promoted from Front End Engineer to Team Lead after two years; stack included Angular, D3.js, JavaScript, and Clojure.",
+          ],
+        },
+      ],
+    },
+  ],
+  education: [
+    {
+      institution: "Recurse Center, New York, NY",
+      degree:
+        "Focused on Rust programming, low-level computing, and browser internals.",
+      year: "May 2018 - Aug 2018",
+    },
+    {
+      institution: "New York University, New York, NY",
+      degree:
+        "M.A. Journalism with Advanced Certificate in Science, Health, and Environmental Reporting",
+      year: "2011",
+    },
+    {
+      institution: "Skidmore College, Saratoga Springs, NY",
+      degree: "B.A. Neuroscience",
+      year: "2008",
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="About | Zach Gottlieb"
+  description="About Zach Gottlieb Lorem Ipsum"
+>
+  <div class="stack gap-20">
+    <main class="wrapper">
+      <Hero title="Resume" align="start" />
+
+      <section class="mt-3">
+        <h3 class="text-lg font-semibold border-b pb-1">Experience</h3>
+        {
+          resume.experience.map((job) => (
+            <div class="mt-3">
+              <h4 class="text-md font-bold">{job.company}</h4>
+              {job.roles.map((role) => (
+                <div class="mt-2">
+                  <p class="text-sm text-gray-600">
+                    {role.role} | {role.duration}
+                  </p>
+                  <ul class="list-disc list-inside text-gray-700">
+                    {role.description.map((point) => (
+                      <li>{point}</li>
+                    ))}
+                    {role.top_projects && (
+                      <li>
+                        <strong>Top Projects:</strong>
+                        <ul class="list-circle list-inside pl-6">
+                          {role.top_projects.map((project) => (
+                            <li>{project}</li>
+                          ))}
+                        </ul>
+                      </li>
+                    )}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          ))
+        }
+      </section>
+
+      <section class="mt-3">
+        <h3 class="text-lg font-semibold border-b pb-1">Education</h3>
+        {
+          resume.education.map((edu) => (
+            <div class="mt-3">
+              <h4 class="text-md font-bold">{edu.institution}</h4>
+              <p class="text-sm text-gray-600">{edu.year}</p>
+              <ul class="list-disc list-inside text-gray-700">
+                <li>{edu.degree}</li>
+              </ul>
+            </div>
+          ))
+        }
+      </section>
+    </main>
+  </div>
+</BaseLayout>
+
+<style>
+  .about {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
+
+  img {
+    margin-top: 1.5rem;
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-md);
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--gray-200);
+  }
+
+  .section-title {
+    grid-column-start: 1;
+    font-size: var(--text-xl);
+    color: var(--gray-0);
+  }
+
+  .content {
+    grid-column: 2 / 4;
+  }
+
+  .content :global(a) {
+    text-decoration: 1px solid underline transparent;
+    text-underline-offset: 0.25em;
+    transition: text-decoration-color var(--theme-transition);
+  }
+
+  .content :global(a:hover),
+  .content :global(a:focus) {
+    text-decoration-color: currentColor;
+  }
+
+  @media (min-width: 50em) {
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 60% 1fr;
+    }
+
+    .about > :global(:first-child) {
+      grid-column-start: 2;
+    }
+
+    section {
+      display: contents;
+      font-size: var(--text-lg);
+    }
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+
+  header {
+    background-color: #f4f4f4;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 2em;
+  }
+
+  header p {
+    margin: 5px 0 0;
+    font-size: 1em;
+    color: #666;
+  }
+
+  main {
+    padding: 20px;
+  }
+
+  section {
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    font-size: 1.25rem; /* Smaller header size */
+  }
+
+  h4 {
+    font-size: 1.25rem; /* Larger font size for company names */
+  }
+
+  ul {
+    list-style-type: circle; /* Use circles for bullet points */
+    padding-left: 1.5rem; /* Add padding for indentation */
+  }
+
+  ul ul {
+    padding-left: 2rem; /* Further indent nested lists */
+  }
+
+  li {
+    font-size: 0.875rem; /* Smaller text size for list items */
+    line-height: 1.4; /* Adjust line height for readability */
+  }
+
+  body {
+    font-size: 0.875rem; /* Smaller overall text size */
+    line-height: 1.5;
+  }
+
+  p.text-sm.text-gray-600 {
+    font-size: 1rem; /* Smaller font size for title and dates */
+  }
+</style>
